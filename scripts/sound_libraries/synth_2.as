@@ -1,0 +1,7 @@
+﻿package sound_libraries{	import flash.media.SoundChannel;	import flash.media.Sound;		public class synth_2{		var mySynth_b_1 = new synth_b_1();		var mySynth_b_2 = new synth_b_2();		var mySynth_b_3 = new synth_b_3();		var mySynth_b_4 = new synth_b_4();		var mySynth_b_5 = new synth_b_5();		var mySynth_b_6 = new synth_b_6();		var mySynth_b_7 = new synth_b_7();		var mySynth_b_8 = new synth_b_8();		var mySynth_b_9 = new synth_b_9();		var mySynth_b_10 = new synth_b_10();		var mySynth_b_11 = new synth_b_11();		var mySynth_b_12 = new synth_b_12();		var mySynth_b_13 = new synth_b_13();		var mySynth_b_14 = new synth_b_14();		var mySynth_b_15 = new synth_b_15();		var mySynth_b_16 = new synth_b_16();		var mySynth_b_17 = new synth_b_17();		var mySynth_b_18 = new synth_b_18();		var mySynth_b_19 = new synth_b_19();		var mySynth_b_20 = new synth_b_20();		var mySynth_b_21 = new synth_b_21();		var mySynth_b_22 = new synth_b_22();		var mySynth_b_23 = new synth_b_23();		var mySynth_b_24 = new synth_b_24();		var synthChannel:SoundChannel = new SoundChannel();		public function playSynth_2(passNum:Number){
+			synthChannel = this["mySynth_b_"+passNum].play();		}
+		//end function
+		public function loopSynth(passNum:Number){
+			synthChannel = this["mySynth_b_"+passNum].play(0,9999);
+		}
+				public function stopSynth(){			synthChannel.stop();		}	}}function playLibSound(){	}
