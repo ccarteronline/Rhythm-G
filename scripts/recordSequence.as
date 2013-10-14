@@ -20,15 +20,16 @@ package{
 			trace("I have created a new sequence" +sequenceCount);
 		}
 		private function listenForUserEvents(sequenceCount:Number){
+			trace("Listen for users input on my sequence: " + sequenceCount);	
 			var mySequenceArray = new Array;
 			var myCustMovieClip = new MovieClip();
-			myCustMovieClip.name = this["mySeqeunce_" + sequenceCount]
-			
-			myCustMovieClip.addEventListener(Event.ENTER_FRAME, listenForButtons);
+			myCustMovieClip.name = ["mySeqeunce_" + sequenceCount]
+			trace("what is the movieclip? " + myCustMovieClip.name);
+			/*myCustMovieClip.addEventListener(Event.ENTER_FRAME, listenForButtons);
 			function listenForButtons(){
 				mySequenceArray.push("Silence");
 				trace("I am listening for when the user taps something");
-			}
+			}*/
 		}
 		public function pushIntoSequence(whichBlock){
 			if(sequenceAdder){
