@@ -19,14 +19,16 @@ package{
 			sequenceCount++;
 			listenForUserEvents(sequenceCount);
 			trace("I have created a new sequence" +sequenceCount);
+			return sequenceCount;
 		}
-		public function listenForUserEvents(sequenceCount:Number){
+		private function listenForUserEvents(sequenceCount:Number){
 			trace("Listen for users input on my sequence: " + sequenceCount);
+			return sequenceCount;
 			
-			var mySomething = new sequenceItem();
+			/*var mySomething = new sequenceItem();
 			mySomething.x = 0;
 			mySomething.y = 0;
-			addChild(MovieClip(root).mySomething);
+			addChild(mySomething);*/
 			//trace(MovieClip(root).sequencePad);
 			//-376.8	
 			/*var mySequenceArray = new Array;
