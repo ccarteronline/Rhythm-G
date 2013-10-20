@@ -84,7 +84,6 @@ function stopListening(){
 }
 function editTheArray(){
 	var myCustomStoredSequence = this["soundStorage_" + myNewNum];
-	var shifted;
 	for(var ct:Number=1; ct<= myCustomStoredSequence.length; ct++){
 		trace("Looping");
 		trace(myCustomStoredSequence[ct]);
