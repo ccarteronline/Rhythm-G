@@ -1,4 +1,4 @@
-var prefix:String = "newSequence_";
+﻿var prefix:String = "newSequence_";
 var itemAmt:Number = 4;
 
 var soundStorage_1:Array = new Array();
@@ -8,7 +8,8 @@ var soundStorage_4:Array = new Array();
 
 var myNewNum:Number;
 var isPlayingSequence:Boolean = false;
-var counterNum = 1;
+var counterNum = 0;
+var sequencerNum;
 
 function initiateSequenceListeners(){
 	for(var i:Number = 1; i<=itemAmt; i++){
@@ -38,6 +39,7 @@ function playSequence(e:MouseEvent){
 		this.addEventListener(Event.ENTER_FRAME, playArray);
 		var _parentObjSequence = MovieClip(e.currentTarget.parent).name;
 		var whatSequencerToGet = _parentObjSequence.charAt(12);
+		sequencerNum = whatSequencerToGet;
 		trace("Get the parent objects numer! " + whatSequencerToGet);
 
 		e.currentTarget.gotoAndStop(2);
@@ -46,9 +48,16 @@ function playSequence(e:MouseEvent){
 	
 }
 function playArray(Event){
-			counterNum++;
-			trace("I am playing through it!");
+			
 			//MovieClip(root).manageSoundPlay(myBlock:Number);
+			if(this["soundStorage_"+sequencerNum][counterNum] == "Silence"){
+				//do nothing, this is silence
+				trace("Silence");
+			}else{
+				MovieClip(root).manageSoundPlay(this["soundStorage_"+sequencerNum][counterNum]);
+				trace("I played a sound ");
+			}
+			counterNum++;//increment the counter
 }
 
 function loopSequence(e:MouseEvent){
@@ -66,7 +75,7 @@ function pushSilenceToArray(Event){
 }
 
 function addNewBlockToArray(blockNumber:Number){
-	this["soundStorage_"+ myNewNum].push("HIT_"+blockNumber);
+	this["soundStorage_"+ myNewNum].push(blockNumber);
 }
 function stopListening(){
 	this.removeEventListener(Event.ENTER_FRAME, pushSilenceToArray);
