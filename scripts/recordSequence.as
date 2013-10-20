@@ -6,7 +6,7 @@ package{
 
 
 	public class recordSequence extends MovieClip{
-		private var sequenceCount:Number = 0;//Create a variable to count how many sequences there are
+		public var sequenceCount:Number = 0;//Create a variable to count how many sequences there are
 		public var isRecording:Boolean = false;//by default, the user isnt recording
 		private var sequenceAdder:Boolean = false;//by defualt the user hasnt enabled the sequencer adder
 		
@@ -19,6 +19,7 @@ package{
 			sequenceCount++;
 			listenForUserEvents(sequenceCount);
 			trace("I have created a new sequence" +sequenceCount);
+			
 			return sequenceCount;
 		}
 		private function listenForUserEvents(sequenceCount:Number){
