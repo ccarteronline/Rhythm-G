@@ -88,7 +88,9 @@ function stopListening(){
 }
 function editTheArray(){
 	var myCustomStoredSequence = this["soundStorage_" + myNewNum];
-	for(var ct:Number=1; ct<= myCustomStoredSequence.length; ct++){
+	
+	//clear the beginning silence
+	for(var ct:Number=0; ct<= myCustomStoredSequence.length; ct++){
 		trace("Looping");
 		trace(myCustomStoredSequence[ct]);
 
@@ -100,7 +102,26 @@ function editTheArray(){
 			trace(myCustomStoredSequence);
 			trace(myCustomStoredSequence.length);
 			trace(myCustomStoredSequence[0]);
+			trace("Im done with clearning the beginning, now im clearning the end");
+			clearTheEnd(myCustomStoredSequence);
 			break;
 		}
 	}
+
+}
+function clearTheEnd(arrayItem){
+	//clear the end silence
+	for(var i:Number = arrayItem.length; i>= 0; i--){
+		if(arrayItem[i] == "Silence"){
+
+			trace("Found Silence Here.."+ arrayItem[i] +" Array Length:"+ arrayItem.length);
+			arrayItem.pop();//REmove the last item of the array
+		}else{
+			trace("There is a sound here, stop...");
+			trace("Array length: " + arrayItem.length);
+			trace(arrayItem[i]);
+			break;
+		}
+	}
+	
 }
