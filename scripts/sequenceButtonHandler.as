@@ -110,10 +110,10 @@ function editTheArray(){
 
 }
 function clearTheEnd(arrayItem){
+	trace(arrayItem.length);
 	//clear the end silence
-	for(var i:Number = arrayItem.length; i>= 0; i--){
+	for(var i:Number = arrayItem.length-1; i>= 0; i--){
 		if(arrayItem[i] == "Silence"){
-
 			trace("Found Silence Here.."+ arrayItem[i] +" Array Length:"+ arrayItem.length);
 			arrayItem.pop();//REmove the last item of the array
 		}else{
