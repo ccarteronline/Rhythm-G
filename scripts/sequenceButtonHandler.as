@@ -1,6 +1,6 @@
 ﻿var prefix:String = "newSequence_";
 var itemAmt:Number = 4;
-
+var isPlayingSequence_1:Boolean, isPlayingSequence_2:Boolean, isPlayingSequence_3:Boolean, isPlayingSequence_4:Boolean;
 var soundStorage_1:Array = new Array();
 var soundStorage_2:Array = new Array();
 var soundStorage_3:Array = new Array();
@@ -29,17 +29,21 @@ function deleteSequence(e:MouseEvent){
 
 function playSequence(e:MouseEvent){
 	//trace("Play the sequence for the user" + e.currentTarget.name);
-	if(isPlayingSequence){
-		isPlayingSequence = false;
+	var _parentObjSequence = MovieClip(e.currentTarget.parent).name;
+	var whatSequencerToGet = _parentObjSequence.charAt(12);
+	
+
+	var isPlayingSequence = this["isPlayingSequence_" + whatSequencerToGet];
+	if(this["isPlayingSequence_" + whatSequencerToGet] == true){
+		this["isPlayingSequence_" + whatSequencerToGet] = false;
 		this.removeEventListener(Event.ENTER_FRAME,playArray);
 		e.currentTarget.gotoAndStop(1);
 		trace("I have stopped playing the sequence");
 		counterNum = 0;//put the array positon back into first position.
 	}else{
-		isPlayingSequence = true;//start playing
+		this["isPlayingSequence_" + whatSequencerToGet] = true;//start playing
 		this.addEventListener(Event.ENTER_FRAME, playArray);
-		var _parentObjSequence = MovieClip(e.currentTarget.parent).name;
-		var whatSequencerToGet = _parentObjSequence.charAt(12);
+	
 		sequencerNum = whatSequencerToGet;
 		trace("Get the parent objects number! " + whatSequencerToGet);
 
@@ -49,7 +53,7 @@ function playSequence(e:MouseEvent){
 	
 }
 function playArray(Event){
-	//MovieClip(root).manageSoundPlay(myBlock:Number);
+	//MovieClip(root).manageSoundPlay(myBlock:Number);                  
 	if(this["soundStorage_"+sequencerNum][counterNum] == "Silence"){
 		//do nothing, this is silence
 		trace("Silence");
