@@ -28,7 +28,7 @@
         <fullScreen>false</fullScreen>
         <autoOrients>false</autoOrients>
         <aspectRatio>landscape</aspectRatio>
-        <renderMode>cpu</renderMode>
+        <renderMode>auto</renderMode>
     </initialWindow>
     <customUpdateUI>false</customUpdateUI>
     <allowBrowserInvocation>false</allowBrowserInvocation>
