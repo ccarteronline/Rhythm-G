@@ -12,13 +12,13 @@ var counterNum = 0;
 var sequencerNum;
 
 function initiateSequenceListeners(){
-	for(var i:Number = 1; i<=itemAmt; i++){
+//	for(var i:Number = 1; i<=itemAmt; i++){
 		
 		//add event listners to the button interactions of in each sequence
-		this[prefix+i].deleteSequence.addEventListener(MouseEvent.CLICK, deleteSequence);
-		this[prefix+i].playSequence.addEventListener(MouseEvent.CLICK, playSequence);
-		this[prefix+i].loopSequence.addEventListener(MouseEvent.CLICK, loopSequence);
-	}	
+//		this[prefix+i].deleteSequence.addEventListener(MouseEvent.CLICK, deleteSequence);
+//		this[prefix+i].playSequence.addEventListener(MouseEvent.CLICK, playSequence);
+//		this[prefix+i].loopSequence.addEventListener(MouseEvent.CLICK, loopSequence);
+//	}	
 }
 
 
