@@ -22,12 +22,12 @@
 		}
 		
 		public function removeItself(){
-			Tweener.addTween(rg_pad,{x:550, y:350, scaleX:0, scaleY:0, alpha:0, time:0.5, delay:0, transition:"easeInBack", onComplete:garabageDump});
+			Tweener.addTween(rg_pad,{x:550, y:350, scaleX:0, scaleY:0, alpha:0, time:0.3, delay:0, transition:"easeOutCubic", onComplete:garabageDump});
 			
 		}
 		public function buildItself(elStage:Stage){
 			rg_pad = new mpcPad();
-			rg_pad.alpha = 1;
+			rg_pad.alpha = 0;
 			elStage.addChild(rg_pad);
 			keptStage = elStage;
 			rg_pad.scaleX = 0;
@@ -35,11 +35,9 @@
 			rg_pad.x = 550;
 			rg_pad.y = 350;
 			
-			Tweener.addTween(rg_pad,{x:-55, y:-30, scaleX:1, scaleY:1, alpha:1, time:0.5, delay:.2, transition:"easeOutBack"});
+			Tweener.addTween(rg_pad,{x:-55, y:-30, scaleX:1, scaleY:1, alpha:1, time:0.3, delay:.2, transition:"linear"});
 		}
 		public function garabageDump(){
-			trace('stage: ', keptStage);
-			trace('Object', rg_pad);
 			keptStage.removeChild(rg_pad);
 		}
 		public function detailbuttons(){
@@ -53,11 +51,9 @@
 		
 		}
 		public function initPlaySoundObjectDown(e:TouchEvent){
-			trace('asdfsf');
 			e.currentTarget.gotoAndStop(2);
 		}
 		public function initPlaySoundObjectUp(e:TouchEvent){
-			trace('asdasdfsfsfsff');
 			e.currentTarget.gotoAndStop(1);
 		}
 	}

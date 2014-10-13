@@ -18,7 +18,7 @@
 			//this.cacheAsBitmapMatrix = this.transform.concatenatedMatrix;
 			//this.cacheAsBitmap = true;
 						
-			buildNavButtons("navbtn_", ["RECORD", "MODIFY", "CONNECT", "SETTINGS","STOP"]);
+			buildNavButtons("navbtn_", ["RECORD", "CONNECT", "REPEAT", "LIBRARY", "STOP"]);
 			homeBtn.addEventListener(MouseEvent.CLICK, goToDPad);
 			
 		}
@@ -38,23 +38,24 @@
 			e.currentTarget.alpha = 0.2;
 		}
 		public function navBtnClickedUp(e:MouseEvent){
-			trace(e.currentTarget.btnText.text);
 			e.currentTarget.alpha = 1;
 			
 			if(!isTabbedWindowOpen){
-				createTabWindow();
+				createTabWindow(e.currentTarget.btnText.text);
 				//Tell the dPad to dissappear by passing this nav val to true
 				//it will animate out set a time delay to animate the called 
 				//object box current below
 				userNavPassage = true;
 				//Create a new tab for important features items to be housed in.
 			}else{
-				trace("populate shit in");
+				if(e.currentTarget.btnText.text == "RECORD"){
+					trace('build out recorder');
+				}
 			}
 			
 		}
 		
-		public function createTabWindow(){
+		public function createTabWindow(tabName:String){
 			
 			ctrlTabObj = new controlTab();
 			stage.addChildAt(ctrlTabObj,1);
@@ -63,8 +64,14 @@
 			ctrlTabObj.scaleY = 0;
 			ctrlTabObj.x = 550;
 			ctrlTabObj.y = 350;
-			Tweener.addTween(ctrlTabObj, {scaleX:1, scaleY:1, alpha:1, x:568.45, y:378, time:0.5, delay:0.8, transition:"easeOutBack"});
+			Tweener.addTween(ctrlTabObj, {scaleX:1, scaleY:1, alpha:1, x:568.45, y:378, time:0.3, delay:0.5, transition:"linear"});
 			isTabbedWindowOpen = true;
+			
+			if(tabName == "RECORD"){
+				trace('display record panel and populate it here');
+				ctrlTabObj.populateObject(0);
+				
+			}
 		}
 		
 		public function removeTabWindow(){

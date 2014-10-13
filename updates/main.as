@@ -25,10 +25,8 @@
 			trace('Welcome to RhythmG');
 			scaleTheStage();
 			
-			Tweener.addTween(this,{alpha:1, time:0, delay:1, transition:"linear", onComplete:showDPadButtons});
-			Tweener.addTween(this,{alpha:1, time:0, delay:1, transition:"linear", onComplete:buildFooter});
-			//showDPadButtons();
-			//buildFooter();
+			Tweener.addTween(this,{alpha:1, time:0, delay:0.8, transition:"linear", onComplete:showDPadButtons});
+			Tweener.addTween(this,{alpha:1, time:0, delay:0.8, transition:"linear", onComplete:buildFooter});			
 			
 		}
 		public function scaleTheStage(){
