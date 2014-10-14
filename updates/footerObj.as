@@ -68,12 +68,19 @@
 			isTabbedWindowOpen = true;
 			
 			if(tabName == "RECORD"){
+				
 				trace('Display Record');
 				ctrlTabObj.populateObject(0);
 				
 			}else if(tabName == "CONNECT"){
+				
 				trace('Display Connect');
 				ctrlTabObj.populateObject(1);
+				
+			}else if(tabName == "REPEAT"){
+				
+				trace("Display Repeat");
+				ctrlTabObj.populateObject(2);
 			}
 		}
 		

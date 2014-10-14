@@ -10,6 +10,7 @@
 		
 		public var blkCsr:blockChooser;
 		public var rcdBtn:recordBtn;
+		public var rptBtn:repeatBtn;
 		public var cntObj:connectObj;
 		public var tickAmnt:Number = 24;
 		public var selectedBlock:Number;
@@ -44,6 +45,16 @@
 				cntObj.x = -445;
 				cntObj.loginBtn.btnText.text = "LOGIN";
 				cntObj.logoutBtn.btnText.text = "LOGOUT";
+				
+			}else if(objStr == 2){
+				showChooser("SELECT FOR REPEAT");
+				
+				rptBtn = new repeatBtn();
+				this.addChild(rptBtn);
+				rptBtn.x = -2;
+				rptBtn.y = 135;
+				rptBtn.scaleX = 0.8;
+				rptBtn.scaleY = 0.8;
 			}
 		}
 
