@@ -68,9 +68,12 @@
 			isTabbedWindowOpen = true;
 			
 			if(tabName == "RECORD"){
-				trace('display record panel and populate it here');
+				trace('Display Record');
 				ctrlTabObj.populateObject(0);
 				
+			}else if(tabName == "CONNECT"){
+				trace('Display Connect');
+				ctrlTabObj.populateObject(1);
 			}
 		}
 		

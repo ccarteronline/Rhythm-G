@@ -10,6 +10,7 @@
 		
 		public var blkCsr:blockChooser;
 		public var rcdBtn:recordBtn;
+		public var cntObj:connectObj;
 		public var tickAmnt:Number = 24;
 		public var selectedBlock:Number;
 		private var heldY:Number;
@@ -25,16 +26,24 @@
 		public function populateObject(objStr:Number){
 
 			if(objStr == 0){
-
 				showChooser("SELECT A BLOCK");
-
-
+				//
 				rcdBtn = new recordBtn();
 				this.addChild(rcdBtn);
 				rcdBtn.scaleX = 0.8;
 				rcdBtn.scaleY = 0.8;
 				rcdBtn.x = -2;
 				rcdBtn.y = 135;
+				
+			}else if(objStr == 1){
+				
+				showChooser("SELECT A BLOCK");
+				//
+				cntObj = new connectObj;
+				this.addChild(cntObj);
+				cntObj.x = -445;
+				cntObj.loginBtn.btnText.text = "LOGIN";
+				cntObj.logoutBtn.btnText.text = "LOGOUT";
 			}
 		}
 
