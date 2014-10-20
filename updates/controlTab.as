@@ -73,10 +73,10 @@
 			
 			//add the drag functionality
 			heldY = blkCsr.selectorBlock.y;
-			blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_DOWN, tapSelectorBlock);
-			blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_UP, doneSelect);
-			blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_OUT, stopAll);
-			blkCsr.tickMarks.addEventListener(MouseEvent.MOUSE_DOWN, moveButtonToPosition);
+			//blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_DOWN, tapSelectorBlock);
+			//blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_UP, doneSelect);
+			//blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_OUT, stopAll);
+			//blkCsr.tickMarks.addEventListener(MouseEvent.MOUSE_DOWN, moveButtonToPosition);
 			
 		}
 		private function tapSelectorBlock(e:MouseEvent){
