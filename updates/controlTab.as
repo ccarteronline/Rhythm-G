@@ -7,7 +7,7 @@
 	
 	
 	public class controlTab extends MovieClip {
-		
+		public var libObj = LibraryObject;
 		public var blkCsr:blockChooser;
 		public var rcdBtn:recordBtn;
 		public var rptBtn:repeatBtn;
@@ -55,6 +55,11 @@
 				rptBtn.y = 135;
 				rptBtn.scaleX = 0.8;
 				rptBtn.scaleY = 0.8;
+				
+			}else if(objStr == 3){
+				libObj = new LibraryObject;
+				this.addChild(libObj);
+				
 			}
 		}
 

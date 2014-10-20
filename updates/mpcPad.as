@@ -22,7 +22,7 @@
 		}
 		
 		public function removeItself(){
-			Tweener.addTween(rg_pad,{x:550, y:350, scaleX:0, scaleY:0, alpha:0, time:0.3, delay:0, transition:"easeOutCubic", onComplete:garabageDump});
+			Tweener.addTween(rg_pad,{x:550, y:350, scaleX:0, scaleY:0, alpha:0, time:0.3, delay:0, transition:"easeInOutBack", onComplete:garabageDump});
 			
 		}
 		public function buildItself(elStage:Stage){
@@ -35,7 +35,7 @@
 			rg_pad.x = 550;
 			rg_pad.y = 350;
 			
-			Tweener.addTween(rg_pad,{x:-55, y:-30, scaleX:1, scaleY:1, alpha:1, time:0.3, delay:.2, transition:"linear"});
+			Tweener.addTween(rg_pad,{x:-55, y:-30, scaleX:1, scaleY:1, alpha:1, time:1.2, delay:.2, transition:"easeInOutBack"});
 		}
 		public function garabageDump(){
 			keptStage.removeChild(rg_pad);

@@ -48,9 +48,9 @@
 				userNavPassage = true;
 				//Create a new tab for important features items to be housed in.
 			}else{
-				if(e.currentTarget.btnText.text == "RECORD"){
-					trace('build out recorder');
-				}
+				trace('build out recorder');
+				removeTabWindow();
+				createTabWindow(e.currentTarget.btnText.text);
 			}
 			
 		}
@@ -81,12 +81,21 @@
 				
 				trace("Display Repeat");
 				ctrlTabObj.populateObject(2);
+				
+			}else if(tabName == "LIBRARY"){
+				
+				trace("Display Library");
+				ctrlTabObj.populateObject(3);
+				
+			}else if(tabName == "STOP"){
+				trace('Never stop dreaming');
 			}
 		}
 		
 		public function removeTabWindow(){
 			
 			stage.removeChild(ctrlTabObj);
+			isTabbedWindowOpen = false;
 		}
 		
 		public function goToDPad(e:MouseEvent){
