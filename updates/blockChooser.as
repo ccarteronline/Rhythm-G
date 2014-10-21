@@ -12,23 +12,37 @@
 		private var isDown:Boolean;
 		public var btnTopBound:Number = 136;
 		public var btnBottomBound:Number = 192;
+		public var leftBound:Number = -480;
+		public var rightBound:Number = 460;
+		public var tickAmnt:Number = 24;
 		
 		public function blockChooser() {
 			// constructor code
-			trace('Running Block chooser');
 			selectorBlock.addEventListener(MouseEvent.MOUSE_DOWN, tappedDown);
 			selectorBlock.addEventListener(MouseEvent.MOUSE_MOVE, movingMouse);
 			selectorBlock.addEventListener(MouseEvent.MOUSE_UP, releasedTap);
+			tickMarks.addEventListener(MouseEvent.MOUSE_DOWN, tappedTick);
+		}
+		private function tappedTick(e:MouseEvent){
+			trace('tapped tick');
 		}
 		
+		private function checkTickMarks(obj){			
+			for(var f:Number = 1; f<= tickAmnt; f++){
+				if(obj.hitTestObject(tickMarks["tick_"+f])){
+					hudText.text = ("SELECTED BLOCK: " + f);
+					//return f;
+				}
+			}
+		}
+		
+		
 		private function tappedDown(e:MouseEvent){
-			trace('Moused Down.');
 			e.currentTarget.x = keptMouseX;
 			
 			isDown = true;
 		}
 		private function releasedTap(e:MouseEvent){
-			trace('working for those places is no more chrti');
 			isDown = false;
 		}
 		private function movingMouse(e:MouseEvent){
@@ -36,10 +50,23 @@
 			keptMouseX = this.mouseX;
 			
 			if(isDown){
+				
 				e.currentTarget.x = keptMouseX;
-				trace('mosueY', this.mouseY);
+				
+				checkTickMarks(e.target);
+				
 				if(this.mouseY < btnTopBound || this.mouseY > btnBottomBound){
-					trace('stop!');
+					isDown = false;
+				}
+				
+				if(e.target.x < leftBound){
+					
+					e.target.x = leftBound-2;
+					isDown = false;
+					
+				}else if(e.target.x > rightBound){
+					
+					e.target.x = rightBound-2;
 					isDown = false;
 				}
 			}
