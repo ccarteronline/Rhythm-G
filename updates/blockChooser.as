@@ -10,8 +10,8 @@
 		
 		private var keptMouseX:Number;
 		private var isDown:Boolean;
-		private var selectorHeight:Number;
-		private var btnTopBound:Number = 136;
+		public var btnTopBound:Number = 136;
+		public var btnBottomBound:Number = 192;
 		
 		public function blockChooser() {
 			// constructor code
@@ -37,8 +37,11 @@
 			
 			if(isDown){
 				e.currentTarget.x = keptMouseX;
-				selectorHeight = e.currentTarget.height;
-				
+				trace('mosueY', this.mouseY);
+				if(this.mouseY < btnTopBound || this.mouseY > btnBottomBound){
+					trace('stop!');
+					isDown = false;
+				}
 			}
 			
 		}
