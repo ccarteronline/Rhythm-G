@@ -4,6 +4,8 @@
 	import flash.events.MouseEvent;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
+	import caurina.transitions.Tweener;
+	import flash.events.Event;
 	
 	
 	public class blockChooser extends MovieClip {
@@ -15,6 +17,8 @@
 		public var leftBound:Number = -480;
 		public var rightBound:Number = 460;
 		public var tickAmnt:Number = 24;
+		public var blkHudText = hudText;
+		public var keptBlock:Number;
 		
 		public function blockChooser() {
 			// constructor code
@@ -23,15 +27,23 @@
 			selectorBlock.addEventListener(MouseEvent.MOUSE_UP, releasedTap);
 			tickMarks.addEventListener(MouseEvent.MOUSE_DOWN, tappedTick);
 		}
+		
 		private function tappedTick(e:MouseEvent){
-			trace('tapped tick');
+			selectorBlock.addEventListener(Event.ENTER_FRAME, isAnimating);
+			Tweener.addTween(selectorBlock, {x:this.mouseX, time:0.5, delay:0, transition:"easeOutCubic", onComplete:stopInPlace});
+		}
+		private function isAnimating(e:Event){
+			checkTickMarks(selectorBlock.tickHitter);
+		}
+		private function stopInPlace(){
+			//selectorBlock.removeEventListener(Event.ENTER_FRAME, holdYPosition);
 		}
 		
 		private function checkTickMarks(obj){			
 			for(var f:Number = 1; f<= tickAmnt; f++){
-				if(obj.hitTestObject(tickMarks["tick_"+f])){
+				if(selectorBlock.tickHitter.hitTestObject(tickMarks["tick_"+f])){
 					hudText.text = ("SELECTED BLOCK: " + f);
-					//return f;
+					keptBlock = f;
 				}
 			}
 		}
@@ -59,18 +71,21 @@
 					isDown = false;
 				}
 				
-				if(e.target.x < leftBound){
-					
-					e.target.x = leftBound-2;
-					isDown = false;
-					
-				}else if(e.target.x > rightBound){
-					
-					e.target.x = rightBound-2;
-					isDown = false;
-				}
+				checkAndCorrectBounds(e.target);
 			}
 			
+		}
+		private function checkAndCorrectBounds(obj){
+			if(obj < leftBound){
+
+				obj = leftBound-2;
+				isDown = false;
+				
+			}else if(obj > rightBound){
+				
+				obj = rightBound-2;
+				isDown = false;
+			}
 		}
 		
 	}
