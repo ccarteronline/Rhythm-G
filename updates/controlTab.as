@@ -17,17 +17,20 @@
 		private var heldY:Number;
 		private var leftBound:Number = -480;
 		private var rightBound:Number = 460;
+		public var heldTap:Number;
 		
-		public function controlTab() {
+		public function controlTab(lastTapedPad:Number) {
+			
+			heldTap = lastTapedPad;
 			// constructor code
 			//trace('a control tab was loaded in...');
-			
+			//trace(MovieClip(parent));
 		}
 		
 		public function populateObject(objStr:Number){
 
 			if(objStr == 0){
-				showChooser("SELECT A BLOCK");
+				showChooser("SELECTED BLOCK: "+heldTap);
 				//
 				rcdBtn = new recordBtn();
 				this.addChild(rcdBtn);
@@ -38,7 +41,7 @@
 				
 			}else if(objStr == 1){
 				
-				showChooser("SELECT A BLOCK");
+				showChooser("SELECT BLOCK: "+heldTap);
 				//
 				cntObj = new connectObj;
 				this.addChild(cntObj);
@@ -65,11 +68,13 @@
 
 		private function showChooser(bTitle:String){
 			//add the block chooser
-			blkCsr = new blockChooser();
+			blkCsr = new blockChooser(heldTap);
 			this.addChild(blkCsr);
 			blkCsr.x = 12;
 			blkCsr.y = -247;
 			blkCsr.hudText.text = bTitle;
+			
+			//trace('current num: ', MovieClip);
 			
 			//add the drag functionality
 			heldY = blkCsr.selectorBlock.y;

@@ -11,16 +11,18 @@
 		public var calledToBuildDPad:Boolean = false;
 		public var isTabbedWindowOpen:Boolean;
 		public var ctrlTabObj:controlTab;
+		public var lastTappedButton:Number;
 		
-		public function footerObj() {
-			// constructor code
-			
+		public function footerObj(ego:main) {			
 			//this.cacheAsBitmapMatrix = this.transform.concatenatedMatrix;
 			//this.cacheAsBitmap = true;
-						
+			trace("hello: ", ego);
 			buildNavButtons("navbtn_", ["RECORD", "CONNECT", "REPEAT", "LIBRARY", "STOP"]);
 			homeBtn.addEventListener(MouseEvent.CLICK, goToDPad);
 			
+		}
+		public function setCurrentTapped(num:Number){
+			lastTappedButton = num;
 		}
 		
 		public function buildNavButtons(pfx:String, btnNav:Array){
@@ -57,7 +59,7 @@
 		
 		public function createTabWindow(tabName:String){
 			
-			ctrlTabObj = new controlTab();
+			ctrlTabObj = new controlTab(lastTappedButton);
 			stage.addChildAt(ctrlTabObj,1);
 			ctrlTabObj.alpha = 0;
 			ctrlTabObj.scaleX = 0;
