@@ -9,7 +9,7 @@
 		
 		public var orngOvly;
 		
-		public function recordBtn() {
+		public function recordBtn(heldTapObj:Number) {
 			// constructor code
 			trace('hello');
 			this.addEventListener(MouseEvent.MOUSE_DOWN, tapDown);
@@ -45,6 +45,7 @@
 		private function stopRecording(e:MouseEvent){
 			trace('stop recording');
 			Tweener.addTween(orngOvly, {alpha:0, time:1, delay:0, transition:"easeOutCubic", onComplete:removeObj});
+			orngOvly.removeEventListener(MouseEvent.MOUSE_DOWN, stopRecording);
 		}
 		private function removeObj(){
 			stage.removeChild(orngOvly);

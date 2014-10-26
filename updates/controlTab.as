@@ -32,7 +32,7 @@
 			if(objStr == 0){
 				showChooser("SELECTED BLOCK: "+heldTap);
 				//
-				rcdBtn = new recordBtn();
+				rcdBtn = new recordBtn(heldTap);
 				this.addChild(rcdBtn);
 				rcdBtn.scaleX = 0.8;
 				rcdBtn.scaleY = 0.8;

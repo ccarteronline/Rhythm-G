@@ -25,7 +25,10 @@
 				
 		public function main() {
 			//create instace of save object
-			saveObj.runThroughInstance(this);
+			saveObj.runThroughInstance(ego);
+			saveObj.writeObject();
+			saveObj.readObject();
+
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;//allow multitouch
 			trace('Welcome to RhythmG');
 			scaleTheStage();

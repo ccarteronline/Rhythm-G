@@ -23,7 +23,7 @@
 		public var keptBlock:Number;
 		public var sharedObj:SharedObject = SharedObject.getLocal('blockchooser');
 		public var lastPressedBlock:Number;
-		public var tickXMarks:Array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+		public var mainObj:main;
 		
 		public function blockChooser(lastTapped:Number) {
 			// constructor code
@@ -33,17 +33,17 @@
 			tickMarks.addEventListener(MouseEvent.MOUSE_DOWN, tappedTick);
 			
 			lastPressedBlock = lastTapped;
-			trace("length:", tickXMarks.length);
 			
 			//trace("Get current block: "+ saveObj.lastTapped);
 			//trace(MovieClip(root).testVar);
 			trace('persist! ', lastPressedBlock);
 			moveToCurrentBlock(lastPressedBlock);
+			//pass to recorder object
+			keptBlock = lastPressedBlock;
 		}
 		
 		private function moveToCurrentBlock(numPsdBlk:Number){
-			trace('adsfs');
-			selectorBlock.x = selectorBlock.x + (35 * numPsdBlk);
+			selectorBlock.x = selectorBlock.x + (40 * numPsdBlk);
 		}
 		
 		private function tappedTick(e:MouseEvent){
@@ -55,6 +55,7 @@
 		}
 		private function stopInPlace(){
 			selectorBlock.removeEventListener(Event.ENTER_FRAME, isAnimating);
+			checkTickMarks(selectorBlock.tickHitter);
 		}
 		
 		private function checkTickMarks(obj){			
