@@ -20,7 +20,13 @@
 		
 		public function writeObject(){
 			var object:Object = new Object();//create new object to store
-			object.value = "storedString";
+			object.heldItem = [
+			{
+				"block": 1
+			},
+			{
+				"block" : 2
+			}];
 			
 			var file:File = File.applicationStorageDirectory.resolvePath(rPath);
 			if(file.exists){
@@ -41,7 +47,7 @@
 				var fileStream:FileStream = new FileStream();
 				fileStream.open(file, FileMode.READ);
 				var object:Object = fileStream.readObject();
-				trace(object.value);
+				trace(object.heldItem[1].block);
 			}
 		}
 
