@@ -26,7 +26,9 @@
 		public function main() {
 			//create instace of save object
 			saveObj.runThroughInstance(ego);
-			saveObj.writeObject();
+			
+			//saveObj.readObject();
+			//saveObj.writeObject();
 			saveObj.readObject();
 
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;//allow multitouch

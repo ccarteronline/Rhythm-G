@@ -7,6 +7,128 @@
 		
 		private var _topLevel:main;
 		private var rPath:String = "rhythm-g.file";
+		public var blockArray:Array = [
+			{
+				"block" : 1,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 2,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 3,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 4,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 5,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 6,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 7,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 8,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 9,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 10,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 11,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 12,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 13,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 14,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 15,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 16,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 17,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 18,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 19,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 20,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 21,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 22,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 23,
+				"recorded" : false,
+				"recordedSound" : null
+			},
+			{
+				"block" : 24,
+				"recorded" : false,
+				"recordedSound" : null
+			}
+		];
 		
 		public function saveObject() {
 			// constructor code

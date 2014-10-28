@@ -30,7 +30,7 @@
 			selectorBlock.addEventListener(MouseEvent.MOUSE_DOWN, tappedDown);
 			selectorBlock.addEventListener(MouseEvent.MOUSE_MOVE, movingMouse);
 			selectorBlock.addEventListener(MouseEvent.MOUSE_UP, releasedTap);
-			tickMarks.addEventListener(MouseEvent.MOUSE_DOWN, tappedTick);
+			//tickMarks.addEventListener(MouseEvent.MOUSE_DOWN, tappedTick);
 			
 			lastPressedBlock = lastTapped;
 			
