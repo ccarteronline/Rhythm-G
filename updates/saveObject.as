@@ -2,6 +2,8 @@
 	import flash.filesystem.FileStream;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
+	import flash.media.Sound;
+	import flash.utils.ByteArray;
 	
 	public class saveObject {
 		
@@ -140,16 +142,22 @@
 			_topLevel = mainObject;
 		}
 		
-		public function writeObject(){
+		public function writeObject(obj:ByteArray){
 			var object:Object = new Object();//create new object to store
-			object.heldItem = [
+			/*object.heldItem = [
 			{
 				"block": 1
 			},
 			{
 				"block" : 2
 			}];
+			*/
 			
+			object.soundFile = [
+				{
+					"sound": obj
+				}
+			];
 			var file:File = File.applicationStorageDirectory.resolvePath(rPath);
 			if(file.exists){
 				file.deleteFile();
@@ -169,7 +177,9 @@
 				var fileStream:FileStream = new FileStream();
 				fileStream.open(file, FileMode.READ);
 				var object:Object = fileStream.readObject();
-				trace(object.heldItem[1].block);
+				
+				return object.soundFile[0].sound;
+				//trace(object.soundFile[0].sound);
 			}
 		}
 

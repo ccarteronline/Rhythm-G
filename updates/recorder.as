@@ -14,6 +14,7 @@
         public var nowRecording:Boolean = false;
         public var nowPlaying:Boolean;
         public var heldBlockNum:Number;
+		public var mainObj:main;
         
         public var recordedBytes_1:ByteArray; //= new ByteArray();
         public var sc_1:SoundChannel;
@@ -136,8 +137,11 @@
         public var recordedSoundState_24:Boolean = false;
 		
 		public var storedObj:saveObject = new saveObject();
+		
+		public var isTimeToRemove:Boolean = false;
         
-        public function recorder(onNumBlock:Number) {
+        public function recorder(ego:main, onNumBlock:Number) {
+			mainObj = ego;
             // constructor code
             trace("init Recorder", onNumBlock);
             
@@ -168,25 +172,23 @@
         
         public function recordSound(myBlockNumb:Number){
 			heldBlockNum = myBlockNumb;
+			
             if(nowRecording){
-                trace('stop recording');
+                //Stop Recording here
                 mic.removeEventListener(SampleDataEvent.SAMPLE_DATA, getMicAudio);
                 this.nowRecording= false;
                 this["recordedBytes_" + myBlockNumb].position = 0;
                 this["recordedSoundState_" + myBlockNumb] = true;
                 this["sound_" + myBlockNumb].addEventListener(SampleDataEvent.SAMPLE_DATA, arrangeAudio);
-				
-				//store the sound
-				storedObj.writeObject();
-				
+		
                 playAudio(myBlockNumb);
                 
                     
             }else{
-                trace('start recording');
+				//Start Recording here.
                 resetSoundVar(myBlockNumb);
                 //var myFunction = this["playAudio_" + myBlockNumb];
-                this["sound_" + myBlockNumb].removeEventListener(SampleDataEvent.SAMPLE_DATA, arrangeAudio);
+               // this["sound_" + myBlockNumb].removeEventListener(SampleDataEvent.SAMPLE_DATA, arrangeAudio);
                 
                 this["recordedBytes_" + myBlockNumb].position = 0;
                 this['recordedBytes_' + myBlockNumb].clear();
@@ -203,6 +205,9 @@
         public function getMicAudio(e:SampleDataEvent){
             //write the data using the passThisNumber to its specific bank
             this["recordedBytes_" + heldBlockNum].writeBytes(e.data);
+			
+			//store the sound
+			//storedObj.writeObject(this["recordedBytes_" + heldBlockNum]);
         }
         
         public function onComplete(e:Event= null){
@@ -231,10 +236,20 @@
         
         public function playAudio(soundNum:Number){
             //
+			this["sound_" + soundNum].addEventListener(SampleDataEvent.SAMPLE_DATA, arrangeAudio);
             this["sc_" + soundNum].stop();
             this["recordedBytes_" + soundNum].position = 0;
             this["sc_" + soundNum] = this["sound_" + soundNum].play();
+			trace("main object: ", mainObj.sound_1);
+			mainObj.sound_1 = this["sound_" + soundNum];
+			this["sc_" + soundNum].addEventListener(Event.SOUND_COMPLETE, removeThisObject, false, 0, true);
         }
+		
+		public function removeThisObject(e:Event){
+			trace('delete itself');
+			
+			isTimeToRemove = true;
+		}
     }
     
 }

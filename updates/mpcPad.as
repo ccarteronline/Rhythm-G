@@ -6,8 +6,13 @@
 	import flash.events.TouchEvent;
 	import flash.display.Stage;
 	import flash.events.Event;
+	import flash.media.Sound;
+	import flash.events.SampleDataEvent;
+	import flash.media.SoundChannel;
+	import flash.utils.ByteArray;
 	
 	public class mpcPad extends MovieClip {
+		
 		public var numObjects:Number = 24;
 		public var pfx:String = "block_";
 		public var calledToBuildDPad:Boolean = false;
@@ -15,16 +20,25 @@
 		public var rg_pad:mpcPad;
 		public var keptStage:Stage;
 		public var mainObj:main;
+		public var saveObj = new saveObject();
+		//public var sound_1:Sound = new Sound();
+		public var mpcChannel:SoundChannel = new SoundChannel();
+		//public var heldBytes:ByteArray = new ByteArray();
+		
 		
 		public function mpcPad(ego:main) {
 			//this.cacheAsBitmapMatrix = this.transform.concatenatedMatrix;
 			//this.cacheAsBitmap = true;
-			
 			detailbuttons();
 			this.addEventListener(Event.ENTER_FRAME, tellBlock);
-			
+			//heldBytes = saveObj.readObject();
+			//heldBytes.position = 0;
+			//trace(heldBytes);
 			//pass the main object to get its variables
 			mainObj = ego;
+			
+			//trace(saveObj.readObject());
+			//heldBytes = saveObj.readObject();
 		}
 		
 		public function tellBlock(e:Event){
@@ -65,6 +79,10 @@
 		
 		public function initPlaySoundObjectDown(e:TouchEvent){
 			e.currentTarget.gotoAndStop(2);
+			
+			mpcChannel = mainObj.sound_1.play();
+			
+			trace('down');
 		}
 		
 		public function initPlaySoundObjectUp(e:TouchEvent){

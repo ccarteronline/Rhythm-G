@@ -12,11 +12,13 @@
 		public var isTabbedWindowOpen:Boolean;
 		public var ctrlTabObj:controlTab;
 		public var lastTappedButton:Number;
+		public var mainObj:main;
 		
 		public function footerObj(ego:main) {			
 			//this.cacheAsBitmapMatrix = this.transform.concatenatedMatrix;
 			//this.cacheAsBitmap = true;
 			trace("hello: ", ego);
+			mainObj = ego;
 			buildNavButtons("navbtn_", ["RECORD", "CONNECT", "REPEAT", "LIBRARY", "STOP"]);
 			homeBtn.addEventListener(MouseEvent.CLICK, goToDPad);
 			
@@ -59,7 +61,7 @@
 		
 		public function createTabWindow(tabName:String){
 			
-			ctrlTabObj = new controlTab(lastTappedButton);
+			ctrlTabObj = new controlTab(mainObj, lastTappedButton);
 			stage.addChildAt(ctrlTabObj,1);
 			ctrlTabObj.alpha = 0;
 			ctrlTabObj.scaleX = 0;

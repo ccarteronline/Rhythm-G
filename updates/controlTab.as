@@ -18,9 +18,11 @@
 		private var leftBound:Number = -480;
 		private var rightBound:Number = 460;
 		public var heldTap:Number;
+		public var mainObj:main;
 		
-		public function controlTab(lastTapedPad:Number) {
-			
+		
+		public function controlTab(ego:main, lastTapedPad:Number) {
+			mainObj = ego;
 			heldTap = lastTapedPad;
 			// constructor code
 			//trace('a control tab was loaded in...');
@@ -32,7 +34,7 @@
 			if(objStr == 0){
 				showChooser("SELECTED BLOCK: "+heldTap);
 				//
-				rcdBtn = new recordBtn(heldTap);
+				rcdBtn = new recordBtn(mainObj, heldTap);
 				this.addChild(rcdBtn);
 				rcdBtn.scaleX = 0.8;
 				rcdBtn.scaleY = 0.8;

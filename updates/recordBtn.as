@@ -3,6 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import caurina.transitions.Tweener;
+	import flash.events.Event;
 	
 	
 	public class recordBtn extends MovieClip {
@@ -10,10 +11,11 @@
 		public var orngOvly;
 		public var recorderObject:recorder;
 		public var keptBlockValNum:Number;
+		public var mainObj:main;
 		
 		
-		public function recordBtn(heldTapObj:Number) {
-			// constructor code
+		public function recordBtn(ego:main, heldTapObj:Number) {
+			mainObj = ego;
 			this.addEventListener(MouseEvent.MOUSE_DOWN, tapDown);
 			this.addEventListener(MouseEvent.MOUSE_UP, tapUp);
 			
@@ -27,13 +29,25 @@
 			e.target.y = e.target.y-10;
 			animateRecording();
 			
-			recorderObject = new recorder(MovieClip(parent).blkCsr.keptBlock);
+			recorderObject = new recorder(mainObj, MovieClip(parent).blkCsr.keptBlock);
 			startRecorder();
 		}
 		
 		private function startRecorder(){
 			
 			recorderObject.recordSound(MovieClip(parent).blkCsr.keptBlock);
+			//assign an event listener that looks for a variables true value,
+			//when set to true, delete the object and the event listener
+			
+			this.addEventListener(Event.ENTER_FRAME, checkToDelete);
+		}
+		
+		public function checkToDelete(e:Event){
+			if(recorderObject.isTimeToRemove){
+				this.removeEventListener(Event.ENTER_FRAME, checkToDelete);
+				recorderObject = null;
+				trace(recorderObject, "done");
+			}
 		}
 		
 		
