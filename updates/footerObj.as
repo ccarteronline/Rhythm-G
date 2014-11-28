@@ -5,6 +5,8 @@
 	import flash.display.Stage;
 	import caurina.transitions.Tweener;
 	import flash.events.TouchEvent;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	
 	public class footerObj extends MovieClip {
 		public var userNavPassage:Boolean = false;
@@ -15,8 +17,6 @@
 		public var mainObj:main;
 		
 		public function footerObj(ego:main) {			
-			//this.cacheAsBitmapMatrix = this.transform.concatenatedMatrix;
-			//this.cacheAsBitmap = true;
 			trace("hello: ", ego);
 			mainObj = ego;
 			buildNavButtons("navbtn_", ["RECORD", "CONNECT", "REPEAT", "LIBRARY", "STOP"]);
@@ -73,8 +73,9 @@
 			
 			if(tabName == "RECORD"){
 				
-				trace('Display Record');
-				ctrlTabObj.populateObject(0);
+				//trace('Display Record');
+				//ctrlTabObj.populateObject(0);
+				navigateToURL(new URLRequest("http://rhythm-g.com/recorder.php"), "_blank");
 				
 			}else if(tabName == "CONNECT"){
 				

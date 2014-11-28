@@ -240,8 +240,8 @@
             this["sc_" + soundNum].stop();
             this["recordedBytes_" + soundNum].position = 0;
             this["sc_" + soundNum] = this["sound_" + soundNum].play();
-			trace("main object: ", mainObj.sound_1);
-			mainObj.sound_1 = this["sound_" + soundNum];
+			//trace("main object: ", mainObj.sound_1);
+			//mainObj.sound_1 = this["sound_" + soundNum];
 			this["sc_" + soundNum].addEventListener(Event.SOUND_COMPLETE, removeThisObject, false, 0, true);
         }
 		

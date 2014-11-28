@@ -9,7 +9,6 @@
 	import flash.ui.MultitouchInputMode;
 	import caurina.transitions.Tweener;
 	import saveObject;
-	import flash.media.Sound;
 	
 	
 	public class main extends MovieClip {
@@ -21,31 +20,8 @@
 		public var dPadIsOpen:Boolean = false;
 		public var lastTappedButton:Number;
 		public var ego = this;
+		public var libraryLoaded:String;
 		
-		public var sound_1:Sound = new Sound();
-		public var sound_2:Sound = new Sound();
-		public var sound_3:Sound = new Sound();
-		public var sound_4:Sound = new Sound();
-		public var sound_5:Sound = new Sound();
-		public var sound_6:Sound = new Sound();
-		public var sound_7:Sound = new Sound();
-		public var sound_8:Sound = new Sound();
-		public var sound_9:Sound = new Sound();
-		public var sound_10:Sound = new Sound();
-		public var sound_11:Sound = new Sound();
-		public var sound_12:Sound = new Sound();
-		public var sound_13:Sound = new Sound();
-		public var sound_14:Sound = new Sound();
-		public var sound_15:Sound = new Sound();
-		public var sound_16:Sound = new Sound();
-		public var sound_17:Sound = new Sound();
-		public var sound_18:Sound = new Sound();
-		public var sound_19:Sound = new Sound();
-		public var sound_20:Sound = new Sound();
-		public var sound_21:Sound = new Sound();
-		public var sound_22:Sound = new Sound();
-		public var sound_23:Sound = new Sound();
-		public var sound_24:Sound = new Sound();
 				
 		public function main() {
 			//create instace of save object

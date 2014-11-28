@@ -52,7 +52,7 @@
 				cntObj.logoutBtn.btnText.text = "LOGOUT";
 				
 			}else if(objStr == 2){
-				showChooser("SELECT FOR REPEAT");
+				showChooser("SELECT BLOCK: "+heldTap);
 				
 				rptBtn = new repeatBtn();
 				this.addChild(rptBtn);
@@ -62,8 +62,11 @@
 				rptBtn.scaleY = 0.8;
 				
 			}else if(objStr == 3){
-				libObj = new LibraryObject;
+				showChooser("SELECT BLOCK: "+heldTap);
+				libObj = new LibraryObject(mainObj, blkCsr);
 				this.addChild(libObj);
+				libObj.y = libObj.y+128;
+				libObj.x = libObj.x+30;
 				
 			}
 		}
@@ -80,6 +83,10 @@
 			
 			//add the drag functionality
 			heldY = blkCsr.selectorBlock.y;
+			
+			//Tap to select item functionality
+			
+			
 			//blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_DOWN, tapSelectorBlock);
 			//blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_UP, doneSelect);
 			//blkCsr.selectorBlock.addEventListener(MouseEvent.MOUSE_OUT, stopAll);
